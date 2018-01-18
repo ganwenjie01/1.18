@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    <script type="text/javascript">
+    		document.documentElement.style.fontSize = document.documentElement.clientWidth/16+ "px";  
+   		  
+    </script>
+    <style>
+    	section{
+    	    width: 100%;
+    	    height: 4rem;	
+    	    display: flex;
+    	    position: relative;
+    	}
+    	ul{
+    		list-style: none;
+    		 
+    	}
+    	ul>li{
+    		
+    		 float: left;
+    	}
+    	ul li>img{
+    		width: 100%;
+    		height: 4rem;
+    		position: absolute;
+    		top: 0;
+    		left:0
+    	}
+    </style>  
+</head>
+<body>
+	<section>
+		<ul>
+		<li><img src="img/l1.jpg"/></li>
+		<li><img src="img/l2.jpg"/></li>
+		<li><img src="img/l3.jpg"/></li>
+		<li><img src="img/l4.jpg"/></li>	
+		</ul>
+	</section>
+</body>
+<script type="text/javascript">
+      var box=document.querySelector('section');
+      var list=document.querySelector("ul");
+	  disX=0,
+	  listL=0,
+	  w=box.clientWidth;
+	  list.addEventListener("touchstart",function(e){
+	  	 disX=e.changedTouches[0].pageX;
+	  	 listL=this.offsetLeft;
+	  	 list.style.transition="none"
+	  })
+	    list.addEventListener("touchmove",function(e){
+	    	 var divX=e.changedTouches[0].pageX;
+	    	list.style.life=(divX-disX)+listL+"px";
+	    })
+	  
+	  list.addEventListener("touchend",function(e){
+	  	  var divL=this.offsetLeft;
+	  	  var num=Math.round(divL/w);
+	  	  list.style.left=num*w+'px';
+	  	  list.style.transition="2s";
+	  	   
+	  })
+	  
+</script>
+</html>
